@@ -4,13 +4,14 @@
     <div>
       <form class="inputFiled" @submit.prevent="create">
         <input v-model="newTodo" autocomplete="off">
+
         <button>Add</button>
       </form>
     </div>
     <ul class="todoList">
       <li v-for="item in todos" :key="item.id">
         <h3 :class="{ done: item.completed }" @click="completed(item)">{{ item.content }}</h3>
-        <button @click="remove(item)">Delete</button>
+        <button @click="remove(item)" class="removeBtn">Delete</button>
       </li>
     </ul>
     <div class="footer">
@@ -83,7 +84,7 @@ body {
 
 
 input {
-  width: 97%;
+  width: 100%;
   margin: 20px 0;
   height: 100%;
   border-radius: 3px;
@@ -103,10 +104,12 @@ form button {
   cursor: pointer;
   padding: 5px;
   transition: all 0.3s ease;
+  border-radius: 3px;
 }
 
-.warpper .todoList {
-  margin-top: 20px;
+.todoList {
+  margin: 10px -4px 10px 4px;
+
   max-height: 250px;
   overflow-y: auto;
 }
@@ -118,6 +121,7 @@ li {
   background: #d3d3d3;
   border-radius: 3px;
   padding: 10px 15px;
+
 }
 
 .footer {
@@ -141,6 +145,22 @@ li {
   text-decoration: line-through;
 }
 
+.removeBtn {
+  border: 1px solid red;
+  background: none;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 5px;
+  color: red;
+  cursor: pointer;
+
+}
+
+.removeBtn:hover {
+  background-color: red;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
 
 .item {
   cursor: pointer;
